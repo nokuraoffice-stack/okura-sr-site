@@ -1,0 +1,20 @@
+---
+import { SITE, NAV } from '../data/site';
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="sq" aria-hidden="true"></span>
+      <span>{SITE.name}<small>KYOTO / REMOTE NATIONWIDE</small></span>
+    </a>
+    <nav class="gnav" aria-label="グローバルナビゲーション">
+      <ul>
+        {NAV.map((n) => (
+          <li><a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a></li>
+        ))}
+        <li><a class="nav-cta" href="/contact/" aria-current={path.startsWith('/contact/') ? 'page' : undefined}>お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

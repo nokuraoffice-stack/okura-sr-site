@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Draft from '../components/Draft.astro';
+
+const items = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+const rendered = await Promise.all(items.map(async (e) => ({ e, Content: (await render(e)).Content })));
+const plain = (md = '') => md.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`#>]/g, '').trim();
+const ld = [{
+  '@type': 'FAQPage',
+  mainEntity: items.map((e) => ({
+    '@type': 'Question',
+    name: e.data.question,
+    acceptedAnswer: { '@type': 'Answer', text: plain(e.body) },
+  })),
+}];
+const cats = [...new Set(items.map((e) => e.data.category))];
+---
+<Base title="よくある質問" description="大倉社会保険労務士事務所へのご依頼・対応エリア・料金・AI活用と情報管理などについて、よくいただく質問にお答えします。" updated="2026-11-07" ld={ld}>
+  <div class="wrap">
+    <PageHead title="よくある質問" eyebrow="FAQ" lead="ご依頼前によくいただく質問をまとめました。掲載のない内容は、お気軽にお問い合わせください。" updated="2026-11-07" />
+    <div class="prose">
+      {cats.map((c) => (
+        <section aria-label={c}>
+          <h2>{c}</h2>
+          {rendered.filter(({ e }) => e.data.category === c).map(({ e, Content }) => (
+            <div class="faq-item" id={e.id}>
+              <h3>{e.data.question}{e.data.isDraft && <Draft />}</h3>
+              <div class="a"><Content /></div>
+            </div>
+          ))}
+        </section>
+      ))}
+    </div>
+  </div>
+</Base>

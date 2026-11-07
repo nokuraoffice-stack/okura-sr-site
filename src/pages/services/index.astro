@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { SITE } from '../../data/site';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const groups = [
+  { name: '日常業務のアウトソース', sub: '毎月の運用を安定させる' },
+  { name: '守りを固める', sub: 'トラブルを未然に防ぐ' },
+  { name: '攻めの人事', sub: '成長に向けた制度を整える' },
+];
+const ld = [{
+  '@type': 'ItemList',
+  name: 'サービス一覧',
+  itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.data.title, url: `${SITE.url}/services/${s.id}/` })),
+}];
+---
+<Base title="サービス" description="労働・社会保険の手続き代行、給与計算、就業規則、労務相談、助成金・制度設計、教育研修の6サービス。顧問契約のほかスポットのご依頼にも対応します。" updated="2026-11-07" ld={ld}>
+  <div class="wrap">
+    <PageHead title="サービス" eyebrow="Services" lead="手続き・給与計算・規程・相談の6つのサービスを、必要な範囲だけ組み合わせてご依頼いただけます。顧問契約のほか、スポットのご依頼にも対応しています。" updated="2026-11-07" />
+    <div class="grid3">
+      {groups.map((g) => (
+        <section class="svc-col" aria-label={g.name}>
+          <div class="svc-cap"><span>{g.name}</span><span>{g.sub}</span></div>
+          {services.filter((s) => s.data.group === g.name).map((s) => (
+            <a class="card box" href={`/services/${s.id}/`}>
+              <span class="no">{s.data.no}</span>
+              <h2 class="t" style="margin:0">{s.data.title}</h2>
+              <p class="d">{s.data.summary}</p>
+              <span class="more">詳しく見る →</span>
+            </a>
+          ))}
+        </section>
+      ))}
+    </div>
+    <p class="note" style="margin-top:1.2rem">料金は<a href="/pricing/">料金目安</a>をご覧ください。</p>
+  </div>
+</Base>

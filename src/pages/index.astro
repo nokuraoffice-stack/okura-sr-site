@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../data/site';
+import { REASONS, STEPS } from '../data/content';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const news = (await getCollection('news', (e) => !e.data.draft))
+  .sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf())
+  .slice(0, 3);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<Base
+  title="トップ"
+  description="大倉社会保険労務士事務所（京都・代表 大倉教晃）は、従業員1〜50名の中小企業・成長企業の手続き・給与計算・規程・労務相談を、自動化された仕組みで支える社労士事務所です。東京をはじめ全国にオンラインで対応。"
+  updated="2026-11-07"
+>
+  <section class="hero grid-bg">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow" style="margin-bottom:8px">{SITE.firstMention}</div>
+        <h1>労務を、仕組みで回す<br />事務所です。</h1>
+        <p>従業員1〜50名の中小企業・成長企業向け。社内に労務の専門家がいない会社の、手続き・給与計算・規程・相談を、担当者の頑張りではなく自動化された仕組みで支えます。東京をはじめ全国の企業に、オンラインで対応しています。</p>
+        <div class="btn-row" style="margin-top:1.2rem">
+          <a class="btn" href="/contact/">無料で相談する</a>
+          <a class="btn ghost" href="/services/">サービスを見る</a>
+        </div>
+      </div>
+      <div class="tiles" role="list" aria-label="事務所の特徴">
+        <div class="tile box" role="listitem"><span class="n">2018</span><span class="l">年 開業（京都）</span></div>
+        <div class="tile box" role="listitem"><span class="n">全国</span><span class="l">リモートで完結</span></div>
+        <div class="tile box" role="listitem"><span class="n">100%</span><span class="l">電子申請</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="section" aria-labelledby="h-reasons">
+      <div class="section-head"><span class="eyebrow">Why us</span><h2 id="h-reasons">選ばれる3つの理由</h2><span class="line"></span></div>
+      <div class="grid3">
+        {REASONS.map((r) => (
+          <div class="card box">
+            <h3 class="t"><Icon name={r.icon} />{r.title}</h3>
+            <p class="d">{r.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="h-services">
+      <div class="section-head"><span class="eyebrow">Services</span><h2 id="h-services">お引き受けできること</h2><span class="line"></span></div>
+      <div class="grid3">
+        {services.map((s) => (
+          <a class="card box" href={`/services/${s.id}/`}>
+            <span class="no">{s.data.no}</span>
+            <h3 class="t">{s.data.title}</h3>
+            <p class="d">{s.data.summary}</p>
+            <span class="more">詳しく見る →</span>
+          </a>
+        ))}
+      </div>
+      <p class="note" style="margin-top:12px">必要な範囲だけのスポットご依頼（就業規則の改定、助成金申請など）にも対応しています。</p>
+    </section>
+
+    <section class="section" aria-labelledby="h-flow">
+      <div class="section-head"><span class="eyebrow">Flow</span><h2 id="h-flow">ご支援の流れ</h2><span class="line"></span><span class="note">初回のご相談・お見積りは無料</span></div>
+      <ol class="steps box" style="padding:18px">
+        {STEPS.map((s, i) => (
+          <li>
+            <span class={`c ${s.free ? 'free' : 'paid'}`}>{String(i + 1).padStart(2, '0')}</span>
+            <span><span class="t">{s.t}</span>{s.free && <span class="f">無料</span>}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="h-auto">
+      <div class="section-head"><span class="eyebrow">How it works</span><h2 id="h-auto">自動化された仕組み</h2><span class="line"></span></div>
+      <div class="flow">
+        <div class="fbox"><div class="k">御社から</div><div class="t">勤怠データ・入退社情報</div><div class="d">勤怠システムの出力をそのまま送るだけ</div></div>
+        <div class="fbox dark"><div class="k">大倉事務所で</div><div class="t">自動生成・自動検算</div><div class="d">Python＋AIで申請データ・給与データを生成し、前月との差分だけを社労士が確認</div></div>
+        <div class="fbox"><div class="k">御社へ</div><div class="t">電子申請・Web給与明細</div><div class="d">公文書はPDFで共有。空いた時間は、経営者との相談へ</div></div>
+      </div>
+      <p style="margin-top:12px"><a href="/automation/">業務自動化・AI活用の詳細 →</a></p>
+    </section>
+
+    <section class="section" aria-labelledby="h-news">
+      <div class="section-head"><span class="eyebrow">News</span><h2 id="h-news">労務ニュース</h2><span class="line"></span><a href="/news/" class="note">一覧 →</a></div>
+      <ul class="news-list">
+        {news.map((n) => (
+          <li><time datetime={fmt(n.data.datePublished)}>{fmt(n.data.datePublished)}</time><a href={`/news/${n.id}/`}>{n.data.title}</a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>

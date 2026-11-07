@@ -1,0 +1,80 @@
+---
+// 全ページ共通の @graph（ProfessionalService / Person / WebSite / BreadcrumbList）＋ページ別ノード
+import { SITE } from '../data/site';
+
+interface Crumb { name: string; url: string }
+interface Props {
+  crumbs: Crumb[];
+  extra?: Record<string, unknown>[];
+}
+const { crumbs, extra = [] } = Astro.props;
+
+const ORG_ID = `${SITE.url}/#organization`;
+const PERSON_ID = `${SITE.url}/#person`;
+const SITE_ID = `${SITE.url}/#website`;
+
+const org = {
+  '@type': 'ProfessionalService',
+  '@id': ORG_ID,
+  name: SITE.name,
+  alternateName: SITE.alternateName,
+  url: `${SITE.url}/`,
+  logo: `${SITE.url}/logo.png`,
+  image: `${SITE.url}/og.png`,
+  telephone: SITE.telIntl,
+  email: SITE.email,
+  address: {
+    '@type': 'PostalAddress',
+    postalCode: SITE.postalCode,
+    addressRegion: SITE.addressRegion,
+    addressLocality: SITE.addressLocality,
+    streetAddress: SITE.streetAddress,
+    addressCountry: 'JP',
+  },
+  areaServed: { '@type': 'Country', name: 'JP' },
+  founder: { '@id': PERSON_ID },
+  foundingDate: SITE.founded,
+  memberOf: {
+    '@type': 'Organization',
+    name: SITE.partner.name,
+    url: SITE.partner.url,
+  },
+  sameAs: [SITE.partner.profile],
+  knowsAbout: ['給与計算', '社会保険手続', '就業規則', '労務相談', '助成金', '業務自動化'],
+  priceRange: '¥¥',
+};
+
+const person = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: '大倉教晃',
+  alternateName: 'Noriaki Okura',
+  jobTitle: SITE.jobTitle,
+  alumniOf: { '@type': 'CollegeOrUniversity', name: '京都大学' },
+  memberOf: { '@type': 'Organization', name: SITE.association },
+  worksFor: { '@id': ORG_ID },
+  url: `${SITE.url}/about/`,
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': SITE_ID,
+  url: `${SITE.url}/`,
+  name: SITE.name,
+  inLanguage: 'ja',
+  publisher: { '@id': ORG_ID },
+};
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: c.url,
+  })),
+};
+
+const graph = { '@context': 'https://schema.org', '@graph': [org, person, website, breadcrumb, ...extra] };
+---
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((s) => ({ params: { slug: s.id }, props: { entry: s, all: services } }));
+}
+const { entry, all } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const others = all.filter((s) => s.id !== entry.id).sort((a, b) => a.data.order - b.data.order);
+const ld = [{
+  '@type': 'Service',
+  '@id': `${SITE.url}/services/${entry.id}/#service`,
+  name: d.title,
+  serviceType: d.serviceType,
+  description: `${d.title}（${d.summary}）`,
+  provider: { '@id': `${SITE.url}/#organization` },
+  areaServed: { '@type': 'Country', name: 'JP' },
+  url: `${SITE.url}/services/${entry.id}/`,
+}];
+---
+<Base title={d.title} description={`${d.title}（${d.summary}）。大倉社会保険労務士事務所が全国にオンラインで対応します。`} updated={d.updated} ld={ld} crumbLabel={d.title}>
+  <div class="wrap">
+    <PageHead title={d.title} eyebrow={`Service ${d.no} — ${d.group}`} lead={d.summary} updated={d.updated} />
+    <article class="prose">
+      <Content />
+    </article>
+    <aside class="section" aria-labelledby="h-others">
+      <h2 id="h-others">ほかのサービス</h2>
+      <div class="grid3">
+        {others.map((s) => (
+          <a class="card box" href={`/services/${s.id}/`}><span class="no">{s.data.no}</span><span class="t">{s.data.title}</span><span class="d">{s.data.summary}</span></a>
+        ))}
+      </div>
+    </aside>
+  </div>
+</Base>

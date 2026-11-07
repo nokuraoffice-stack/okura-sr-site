@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Cta from '../components/Cta.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { SITE, CRUMB_LABELS } from '../data/site';
+
+interface Props {
+  title: string;               // ページ固有タイトル（トップは空でも可）
+  description: string;         // meta description / llms.txt の一行説明
+  updated: Date | string;      // 最終更新日
+  ld?: Record<string, unknown>[]; // ページ別 JSON-LD ノード
+  ogType?: 'website' | 'article';
+  crumbLabel?: string;         // 末尾パンくずのラベル上書き（記事タイトル等）
+  showCta?: boolean;
+  noindex?: boolean;
+}
+const { title, description, updated, ld = [], ogType = 'website', crumbLabel, showCta = true, noindex = false } = Astro.props;
+const updatedDate = typeof updated === 'string' ? new Date(updated) : updated;
+
+const path = Astro.url.pathname;
+const canonical = new URL(path, SITE.url).href;
+const fullTitle = path === '/' ? `${SITE.name}（京都・代表 大倉教晃）｜全国リモート対応の社労士事務所` : `${title}｜${SITE.name}（京都）`;
+
+// パンくず
+const segs = path.split('/').filter(Boolean);
+const crumbs = [{ name: 'ホーム', url: `${SITE.url}/` }];
+segs.forEach((s, i) => {
+  const url = `${SITE.url}/${segs.slice(0, i + 1).join('/')}/`;
+  const isLast = i === segs.length - 1;
+  crumbs.push({ name: isLast && crumbLabel ? crumbLabel : (CRUMB_LABELS[s] ?? title), url });
+});
+const ogImage = `${SITE.url}/og.png`;
+---
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="alternate" type="text/markdown" href={path === '/' ? '/index.md' : `${path}index.md`} title="Markdown版" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta name="theme-color" content="#17798A" />
+  <!-- OGP / Twitter -->
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" />
+  <JsonLd crumbs={crumbs} extra={ld} />
+</head>
+<body>
+  <a class="skip" href="#main">本文へスキップ</a>
+  <Header />
+  <div class="wrap">
+    {segs.length > 0 && (
+      <nav class="crumbs" aria-label="パンくずリスト">
+        <ol>
+          {crumbs.map((c, i) => (
+            <li>{i < crumbs.length - 1 ? <a href={new URL(c.url).pathname}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
+          ))}
+        </ol>
+      </nav>
+    )}
+  </div>
+  <main id="main">
+    <slot />
+    {showCta && <div class="wrap"><Cta /></div>}
+  </main>
+  <Footer updated={updatedDate} />
+</body>
+</html>

@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+const monthly = [
+  ['1〜4名', '20,000円〜'], ['5〜9名', '30,000円〜'], ['10〜19名', '40,000円〜'],
+  ['20〜29名', '50,000円〜'], ['30〜49名', '65,000円〜'], ['50名以上', '別途お見積り'],
+];
+const payroll = [
+  ['月次給与計算', '10,000円＋1名あたり1,000円'], ['賞与計算', '1回あたり月次と同額'], ['年末調整', '10,000円＋1名あたり1,500円'],
+];
+const setup = [
+  ['初期セットアップ（顧問契約）', '顧問料1か月分'], ['給与計算の初期設定・自動化構築', '50,000円〜'],
+];
+const spot = [
+  ['就業規則 新規作成', '200,000円〜'], ['就業規則 改定', '50,000円〜'], ['諸規程（1本あたり）', '50,000円〜'],
+  ['助成金申請', '着手金30,000円＋支給額の15〜20%'], ['単発の手続き（1件あたり）', '10,000円〜'], ['労働基準監督署の調査立会い（1回あたり）', '50,000円〜'],
+];
+const tables = [
+  { id: 'monthly', h: '月額顧問', note: '手続き代行・労務相談無制限・法改正のご案内・算定基礎届・年度更新を含みます。', col: ['従業員数', '月額（目安・税別）'], rows: monthly },
+  { id: 'payroll', h: '給与計算オプション', note: '顧問契約に追加してご依頼いただけます。', col: ['項目', '料金（目安・税別）'], rows: payroll },
+  { id: 'setup', h: '初期費用', note: '', col: ['項目', '料金（目安・税別）'], rows: setup },
+  { id: 'spot', h: 'スポットのご依頼', note: '顧問契約がなくてもご依頼いただけます。', col: ['項目', '料金（目安・税別）'], rows: spot },
+];
+const ld = [{
+  '@type': 'OfferCatalog',
+  name: '料金目安（税別）',
+  itemListElement: monthly.filter(([, p]) => p.includes('円〜')).map(([k, p]) => ({
+    '@type': 'Offer',
+    name: `月額顧問（従業員${k}）`,
+    priceSpecification: { '@type': 'UnitPriceSpecification', price: Number(p.replace(/[^0-9]/g, '')), priceCurrency: 'JPY', unitText: '月', valueAddedTaxIncluded: false },
+  })),
+}];
+---
+<Base title="料金目安" description="大倉社会保険労務士事務所の料金目安（税別）。月額顧問は従業員1〜4名で20,000円〜。給与計算オプション、初期費用、就業規則・助成金などスポットのご依頼の目安を掲載しています。" updated="2026-11-07" ld={ld}>
+  <div class="wrap">
+    <PageHead title="料金目安" eyebrow="Pricing" lead="掲載の金額はすべて「目安」「税別」です。実際の料金は、従業員数・業務の範囲・ご依頼内容をうかがったうえで、お見積りします。" updated="2026-11-07" />
+    <div class="callout"><strong>すべて目安・税別の金額です。</strong> 初回のご相談・お見積りは無料です。正式な料金はお見積書でご提示します。</div>
+    {tables.map((t) => (
+      <section class="section" aria-labelledby={`h-${t.id}`}>
+        <h2 id={`h-${t.id}`} style="margin-top:0">{t.h} <span class="badge">目安・税別</span></h2>
+        {t.note && <p class="note">{t.note}</p>}
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">{t.col[0]}</th><th scope="col">{t.col[1]}</th></tr></thead>
+            <tbody>{t.rows.map(([k, v]) => <tr><td>{k}</td><td class="mono">{v}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </section>
+    ))}
+    <p class="note">※ 金額はいずれも目安（税別）です。消費税は別途申し受けます。業務量や難易度により増減する場合があります。</p>
+  </div>
+</Base>

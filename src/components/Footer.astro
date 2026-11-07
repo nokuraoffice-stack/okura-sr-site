@@ -1,0 +1,37 @@
+---
+import { SITE, NAV } from '../data/site';
+interface Props { updated: Date }
+const { updated } = Astro.props;
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="tag">{SITE.catch}</p>
+        <p class="sub">{SITE.catchSub}</p>
+      </div>
+      <address>
+        <b>{SITE.name}</b><br />
+        代表 {SITE.representative}（{SITE.jobTitle}）<br />
+        {SITE.addressFull}<br />
+        <span class="note" style="color:inherit">（{SITE.addressNote}）</span><br />
+        TEL <a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（直通）／ {SITE.telSub}（代）<br />
+        MAIL <a class="mono" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </address>
+      <nav aria-label="フッターナビゲーション">
+        <ul>
+          {NAV.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          <li><a href="/ai-policy/">生成AI利用方針</a></li>
+          <li><a href="/privacy/">個人情報保護方針</a></li>
+          <li><a href="/contact/">お問い合わせ</a></li>
+          <li><a href={SITE.partner.url} rel="noopener">{SITE.partner.name}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="copy">
+      <span>© {SITE.founded}–{new Date().getFullYear()} {SITE.name}</span>
+      <span>最終更新 <time datetime={fmt(updated)}>{fmt(updated)}</time></span>
+    </div>
+  </div>
+</footer>

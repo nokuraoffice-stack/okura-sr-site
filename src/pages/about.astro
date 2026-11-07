@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { SITE } from '../data/site';
+const ld = [{
+  '@type': 'AboutPage',
+  url: `${SITE.url}/about/`,
+  name: '事務所概要',
+  about: { '@id': `${SITE.url}/#organization` },
+  mainEntity: { '@id': `${SITE.url}/#person` },
+}];
+---
+<Base title="事務所概要・代表プロフィール" description="大倉社会保険労務士事務所（京都・代表 大倉教晃）の事務所概要、代表プロフィール、連携先（京都太陽合同事務所）のご紹介です。" updated="2026-11-07" ld={ld}>
+  <div class="wrap">
+    <PageHead title="事務所概要・代表プロフィール" eyebrow="About" lead={`${SITE.firstMention}は、2018年に京都で開業した社会保険労務士事務所です。全国の企業にオンラインで対応しています。`} updated="2026-11-07" />
+
+    <section aria-labelledby="h-office">
+      <h2 id="h-office" style="margin-top:0">事務所概要</h2>
+      <dl class="dl">
+        <div><dt>事務所名</dt><dd>{SITE.name}</dd></div>
+        <div><dt>代表</dt><dd>{SITE.representative}（{SITE.representativeKana}）{SITE.jobTitle}</dd></div>
+        <div><dt>所在地</dt><dd>{SITE.addressFull}<br /><span class="note">（{SITE.addressNote}）</span></dd></div>
+        <div><dt>電話</dt><dd><a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（直通）／ {SITE.telSub}（代）</dd></div>
+        <div><dt>メール</dt><dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd></div>
+        <div><dt>開業</dt><dd>2018年（京都）</dd></div>
+        <div><dt>対応エリア</dt><dd>全国（東京をはじめ全国。オンライン・電子申請で完結）</dd></div>
+        <div><dt>対象</dt><dd>従業員1〜50名の中小企業・成長企業</dd></div>
+        <div><dt>所属</dt><dd>{SITE.association}（理事）</dd></div>
+        <div><dt>連携</dt><dd><a href={SITE.partner.url} rel="noopener">{SITE.partner.name}</a>（弁護士・税理士・行政書士等の合同事務所）</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="h-profile">
+      <h2 id="h-profile">代表プロフィール</h2>
+      <div class="box" style="padding:18px">
+        <p style="margin:0 0 .6em"><strong style="font-size:1.2rem">{SITE.representative}</strong> <span class="muted">{SITE.jobTitle} ／ 京都大学法学部卒</span></p>
+        <ul class="dot-list" style="margin:0">
+          <li>法律事務所・社会保険労務士法人・スタートアップ企業の管理部門を経た実務家</li>
+          <li>株主総会・取締役会の事務局運営を主担当。会社法と労働法の両面から助言</li>
+          <li>Python・AIによる業務自動化を自ら設計・実装</li>
+          <li>京都府社会保険労務士会 理事 ／ 京都太陽合同事務所（弁護士・税理士等）と連携</li>
+        </ul>
+      </div>
+      <h3>資格</h3>
+      <ul class="dot-list">
+        <li>特定社会保険労務士</li>
+        <li>行政書士試験 合格（2011年）</li>
+        <li>ビジネス実務法務検定1級</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="h-partner">
+      <h2 id="h-partner">連携先</h2>
+      <p>当事務所は、弁護士・税理士・行政書士等が所属する<a href={SITE.partner.url} rel="noopener">{SITE.partner.name}</a>内に事務所を置き、税務・登記・法律問題などについて専門家と連携して一体で対応します。事務所紹介は<a href={SITE.partner.profile} rel="noopener">京都太陽合同事務所の事務所紹介ページ</a>にも掲載されています。</p>
+    </section>
+  </div>
+</Base>

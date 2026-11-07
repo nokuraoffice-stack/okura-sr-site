@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../data/site';
+export async function getStaticPaths() {
+  const news = await getCollection('news', (e) => !e.data.draft);
+  return news.map((n) => ({ params: { slug: n.id }, props: { entry: n } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const modified = d.dateModified ?? d.datePublished;
+const fmt = (x: Date) => x.toISOString().slice(0, 10);
+const url = `${SITE.url}/news/${entry.id}/`;
+const ld = [{
+  '@type': 'Article',
+  '@id': `${url}#article`,
+  headline: d.title,
+  description: d.description,
+  datePublished: fmt(d.datePublished),
+  dateModified: fmt(modified),
+  author: { '@id': `${SITE.url}/#person` },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  mainEntityOfPage: url,
+  image: `${SITE.url}/og.png`,
+  inLanguage: 'ja',
+  keywords: d.tags.join(','),
+}];
+---
+<Base title={d.title} description={d.description} updated={modified} ld={ld} ogType="article" crumbLabel={d.title}>
+  <div class="wrap">
+    <article class="prose">
+      <header class="page-head">
+        <div class="eyebrow" style="margin-bottom:6px">News{d.tags.length ? ` — ${d.tags.join(' / ')}` : ''}</div>
+        <h1>{d.title}</h1>
+        <p class="updated">公開 <time datetime={fmt(d.datePublished)}>{fmt(d.datePublished)}</time> ／ 最終更新 <time datetime={fmt(modified)}>{fmt(modified)}</time> ／ 執筆 {SITE.representative}（{SITE.jobTitle}）</p>
+      </header>
+      <Content />
+      <p class="note" style="margin-top:2rem">※ 本記事は公開時点の情報に基づく一般的な解説です。個別の事案については<a href="/contact/">お問い合わせ</a>ください。</p>
+      <p><a href="/news/">← 労務ニュース一覧</a></p>
+    </article>
+  </div>
+</Base>

@@ -1,0 +1,22 @@
+{
+  "name": "okura-sr-site",
+  "version": "1.0.0",
+  "description": "大倉社会保険労務士事務所 公式サイト（okura-sr.jp）",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/gen-llms.mjs",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^5.18.2",
+    "turndown": "^7.2.5",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,13 @@
+---
+interface Props { title: string; lead?: string; updated: Date | string; eyebrow?: string; draft?: boolean }
+import Draft from './Draft.astro';
+const { title, lead, updated, eyebrow, draft = false } = Astro.props;
+const d = (typeof updated === 'string' ? new Date(updated) : updated).toISOString().slice(0, 10);
+---
+<header class="page-head">
+  {eyebrow && <div class="eyebrow" style="margin-bottom:6px">{eyebrow}</div>}
+  <h1>{title}</h1>
+  {lead && <p class="lead">{lead}{draft && <Draft />}</p>}
+  <slot />
+  <p class="updated">最終更新 <time datetime={d}>{d}</time></p>
+</header>

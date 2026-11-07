@@ -1,0 +1,13 @@
+---
+import { SITE } from '../data/site';
+---
+<section class="cta" aria-label="お問い合わせのご案内">
+  <div>
+    <p class="tag">{SITE.catch}</p>
+    <p class="sub">{SITE.catchSub}</p>
+  </div>
+  <div class="btn-row">
+    <a class="btn" href="/contact/">無料で相談する</a>
+    <a class="btn ghost" href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>
+  </div>
+</section>

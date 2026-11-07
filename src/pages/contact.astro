@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Draft from '../components/Draft.astro';
+import { SITE } from '../data/site';
+// Googleフォームの埋め込みURL（未設定の間はプレースホルダを表示）
+const FORM_URL = '';
+---
+<Base title="お問い合わせ" description="大倉社会保険労務士事務所へのお問い合わせ。初回のご相談・お見積りは無料です。フォーム・メール・電話で受け付けています。" updated="2026-11-07" showCta={false}>
+  <div class="wrap">
+    <PageHead title="お問い合わせ" eyebrow="Contact" lead="「これは相談していいことだろうか」という段階で、お気軽にご連絡ください。初回のご相談・お見積りは無料です。" updated="2026-11-07" />
+
+    <section aria-labelledby="h-direct">
+      <h2 id="h-direct" style="margin-top:0">メール・電話</h2>
+      <div class="grid3" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="card box">
+          <h3 class="t">メール</h3>
+          <p class="d"><a class="mono" href={`mailto:${SITE.email}?subject=${encodeURIComponent('【お問い合わせ】')}`}>{SITE.email}</a></p>
+          <p class="d">会社名・ご担当者名・従業員数・ご相談内容の概要をお書き添えください。<Draft /></p>
+        </div>
+        <div class="card box">
+          <h3 class="t">電話</h3>
+          <p class="d"><a class="mono" href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（直通）<br />{SITE.telSub}（代）</p>
+          <p class="d">面談・移動中は折り返しのご連絡となる場合があります。<Draft /></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-form" aria-labelledby="h-form">
+      <h2 id="h-form">お問い合わせフォーム</h2>
+      {FORM_URL ? (
+        <iframe src={FORM_URL} title="お問い合わせフォーム" width="100%" height="1100" loading="lazy" style="border:1px solid var(--c-line);max-width:760px;display:block">読み込んでいます…</iframe>
+      ) : (
+        <div class="box" style="padding:24px;max-width:760px;background:var(--c-teal-pale)">
+          <p style="margin:0"><span class="badge">準備中</span> Googleフォームを設置予定です。現在はメールまたはお電話でお問い合わせください。</p>
+        </div>
+      )}
+    </section>
+
+    <section class="section" aria-labelledby="h-next">
+      <h2 id="h-next">お問い合わせ後の流れ</h2>
+      <ol>
+        <li>お問い合わせ（無料）</li>
+        <li>ヒアリング（無料）— オンラインで現状と課題をうかがいます</li>
+        <li>ご提案・お見積り（無料）</li>
+        <li>ご契約・初期設定</li>
+        <li>運用開始・継続支援</li>
+      </ol>
+      <p class="note">お預かりした情報は<a href="/privacy/">個人情報保護方針</a>に従って取り扱います。</p>
+    </section>
+  </div>
+</Base>

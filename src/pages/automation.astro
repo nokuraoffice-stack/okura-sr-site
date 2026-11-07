@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Icon from '../components/Icon.astro';
+import Draft from '../components/Draft.astro';
+import { BEFORE_AFTER, SECURITY } from '../data/content';
+const areas = [
+  { no: '01', t: '手続き', d: '電子申請の自動化・公文書の自動振り分け' },
+  { no: '02', t: '給与計算', d: '勤怠→給与ソフト取込の自動化・全件機械突合' },
+  { no: '03', t: '規程・相談', d: '法改正の月次ウォッチ・AIによる一次整理' },
+];
+---
+<Base title="業務自動化・AI活用" description="大倉社会保険労務士事務所は、手続き・給与計算・規程の実務をPython・AIで自動化し、生まれた時間を相談対応に充てています。Before/After と情報セキュリティ4原則を紹介します。" updated="2026-11-07">
+  <div class="wrap">
+    <PageHead title="業務自動化・AI活用" eyebrow="Automation" lead="事務所の実務そのものを自動化し、その成果を品質と価格に還元しています。定型作業は仕組みに任せ、社労士の時間は相談と判断に使います。" updated="2026-11-07" />
+
+    <section aria-labelledby="h-flow">
+      <h2 id="h-flow" style="margin-top:0">自動化で変わること</h2>
+      <div class="flow">
+        <div class="fbox"><div class="k">STEP 1</div><div class="t">定型作業を自動化</div><div class="d">転記・集計・検算を仕組みで処理</div></div>
+        <div class="fbox dark"><div class="k">STEP 2</div><div class="t">生まれた時間を相談対応へ</div><div class="d">社労士は判断と助言に集中</div></div>
+        <div class="fbox"><div class="k">STEP 3</div><div class="t">属人化から脱却</div><div class="d">担当者の頑張りに頼らない運用へ</div></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="h-areas">
+      <h2 id="h-areas">自動化している3つの領域</h2>
+      <div class="grid3">
+        {areas.map((a) => (
+          <div class="card box"><span class="no">{a.no}</span><h3 class="t">{a.t}</h3><p class="d">{a.d}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section ba" aria-labelledby="h-ba">
+      <h2 id="h-ba">Before / After</h2>
+      <p class="note">いずれも実際の業務で運用中の例です（顧問先名・数値は掲載していません）。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">業務</th><th scope="col" class="b">従来のやり方</th><th scope="col" class="a">自動化後</th></tr></thead>
+          <tbody>
+            {BEFORE_AFTER.map((r) => (<tr><td class="w">{r.w}</td><td>{r.b}</td><td class="a">{r.a}</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="h-sec">
+      <h2 id="h-sec">情報セキュリティ4原則<Draft /></h2>
+      <p class="note">公開版の要約です。詳しくは<a href="/ai-policy/">生成AI利用方針</a>をご覧ください。</p>
+      <div class="grid3" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        {SECURITY.map((s, i) => (
+          <div class="card box"><span class="no">{String(i + 1).padStart(2, '0')}</span><h3 class="t"><Icon name={s.icon} />{s.title}</h3><p class="d">{s.text}</p></div>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+const news = (await getCollection('news', (e) => !e.data.draft)).sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf());
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+const updated = news.reduce((m, n) => { const d = n.data.dateModified ?? n.data.datePublished; return d > m ? d : m; }, new Date('2026-11-07'));
+---
+<Base title="労務ニュース" description="法改正・最低賃金・労務管理のポイントを、社会保険労務士がわかりやすく解説する労務ニュースです。毎月更新しています。" updated={updated}>
+  <div class="wrap">
+    <PageHead title="労務ニュース" eyebrow="News" lead="法改正や労務管理のポイントを、毎月お届けしています。" updated={updated} />
+    <ul class="news-list prose">
+      {news.map((n) => (
+        <li>
+          <time datetime={fmt(n.data.datePublished)}>{fmt(n.data.datePublished)}</time>
+          <a href={`/news/${n.id}/`}>{n.data.title}</a>
+          <span class="note">{n.data.description}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
