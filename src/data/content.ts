@@ -21,7 +21,7 @@ export const BEFORE_AFTER = [
 ] as const;
 
 export const SECURITY = [
-  { icon: 'shield', title: '匿名化・最小化', text: '個人情報は匿名化・最小化し、AIに送信しない運用としています。' },
+  { icon: 'shield', title: '匿名化・最小化', text: '個人情報は匿名化・最小化したうえで取り扱い、マイナンバーと傷病名などの要配慮個人情報は生成AIに入力しません。' },
   { icon: 'lock', title: '法人契約・学習オフ', text: 'クラウドは法人契約・学習利用オフの環境のみを使用します。' },
   { icon: 'send', title: '専用システムで完結', text: '電子申請・公文書は専用システム内で完結させます。' },
   { icon: 'key', title: '二段階認証・ログ管理', text: 'アクセスは二段階認証とログ管理で統制します。' },
