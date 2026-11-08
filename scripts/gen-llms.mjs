@@ -6,10 +6,11 @@
 // どちらで書いたページも同じ規則で変換でき、本文とズレないため。
 import { readdir, readFile, writeFile, stat } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import TurndownService from 'turndown';
 import { gfm } from 'turndown-plugin-gfm';
 
-const DIST = new URL('../dist/', import.meta.url).pathname;
+const DIST = fileURLToPath(new URL('../dist/', import.meta.url)); // Windows でも正しいパスになる
 const SITE = 'https://okura-sr.jp';
 
 // ---- 1. dist 内の index.html を列挙 ----
