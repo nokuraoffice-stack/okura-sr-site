@@ -20,7 +20,7 @@ const ld = [{
         <div><dt>事務所名</dt><dd>{SITE.name}</dd></div>
         <div><dt>代表</dt><dd>{SITE.representative}（{SITE.representativeKana}）{SITE.jobTitle}</dd></div>
         <div><dt>所在地</dt><dd>{SITE.addressFull}<br /><span class="note">（{SITE.addressNote}）</span></dd></div>
-        <div><dt>電話</dt><dd><a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（直通）／ {SITE.telSub}（代）</dd></div>
+        <div><dt>電話</dt><dd><a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（{SITE.telNote}）</dd></div>
         <div><dt>メール</dt><dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd></div>
         <div><dt>開業</dt><dd>2018年（京都）</dd></div>
         <div><dt>対応エリア</dt><dd>全国（東京をはじめ全国。オンライン・電子申請で完結）</dd></div>

@@ -16,7 +16,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         代表 {SITE.representative}（{SITE.jobTitle}）<br />
         {SITE.addressFull}<br />
         <span class="note" style="color:inherit">（{SITE.addressNote}）</span><br />
-        TEL <a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（直通）／ {SITE.telSub}（代）<br />
+        TEL <a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（{SITE.telNote}）<br />
         MAIL <a class="mono" href={`mailto:${SITE.email}`}>{SITE.email}</a>
       </address>
       <nav aria-label="フッターナビゲーション">
