@@ -10,11 +10,19 @@ const news = (await getCollection('news', (e) => !e.data.draft))
   .sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf())
   .slice(0, 3);
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
+const issues = [
+  { t: '手続きが後回しになる', d: '入退社や算定基礎届・年度更新の書類が溜まり、提出期限がいつも直前になっている。' },
+  { t: '給与計算が属人化している', d: '担当者しか分からないExcelで運用しており、休まれると誰も対応できない。' },
+  { t: '就業規則が古いまま', d: '何年も改定しておらず、最近の法改正に対応できているか分からない。' },
+  { t: '相談できる相手がいない', d: '問題社員・休職・ハラスメント。判断に迷っても、社内に専門家がいない。' },
+  { t: '紙とハンコが多すぎる', d: '毎回同じ情報を書き写し、押印と郵送のために時間を取られている。' },
+  { t: '助成金を取りこぼしている', d: '使える制度があるらしいが、調べる時間も申請する余裕もない。' },
+];
 ---
 <Base
   title="トップ"
   description="大倉社会保険労務士事務所（京都・代表 大倉教晃）は、従業員1〜50名の中小企業・成長企業の手続き・給与計算・規程・労務相談を、自動化された仕組みで支える社労士事務所です。東京をはじめ全国にオンラインで対応。"
-  updated="2026-11-07"
+  updated="2026-11-08"
 >
   <section class="hero grid-bg">
     <div class="wrap hero-inner">
@@ -36,6 +44,19 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
   </section>
 
   <div class="wrap">
+    <section class="section" aria-labelledby="h-issues">
+      <div class="section-head"><span class="eyebrow">Issues</span><h2 id="h-issues">こんなお悩みはありませんか</h2><span class="line"></span></div>
+      <div class="grid3">
+        {issues.map((x) => (
+          <div class="card box">
+            <h3 class="t">{x.t}</h3>
+            <p class="d">{x.d}</p>
+          </div>
+        ))}
+      </div>
+      <p class="note" style="margin-top:12px">ひとつでも当てはまれば、外部の社労士（社会保険労務士）に任せる選択肢があります。手続き・給与計算・規程・相談のうち、必要な範囲だけをお引き受けします。</p>
+    </section>
+
     <section class="section" aria-labelledby="h-reasons">
       <div class="section-head"><span class="eyebrow">Why us</span><h2 id="h-reasons">選ばれる3つの理由</h2><span class="line"></span></div>
       <div class="grid3">
@@ -64,7 +85,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
     </section>
 
     <section class="section" aria-labelledby="h-flow">
-      <div class="section-head"><span class="eyebrow">Flow</span><h2 id="h-flow">ご支援の流れ</h2><span class="line"></span><span class="note">初回のご相談・お見積りは無料</span></div>
+      <div class="section-head"><span class="eyebrow">Flow</span><h2 id="h-flow">ご支援の流れ</h2><span class="line"></span><span class="note">初回のご相談（1回・60分程度）とお見積りは無料</span></div>
       <ol class="steps box" style="padding:18px">
         {STEPS.map((s, i) => (
           <li>
@@ -82,7 +103,14 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         <div class="fbox dark"><div class="k">大倉事務所で</div><div class="t">自動生成・自動検算</div><div class="d">Python＋AIで申請データ・給与データを生成し、前月との差分だけを社労士が確認</div></div>
         <div class="fbox"><div class="k">御社へ</div><div class="t">電子申請・Web給与明細</div><div class="d">公文書はPDFで共有。空いた時間は、経営者との相談へ</div></div>
       </div>
-      <p style="margin-top:12px"><a href="/automation/">業務自動化・AI活用の詳細 →</a></p>
+      <p class="note" style="margin-top:12px">自動化は業務効率化のための手段です。申請内容・給与額の最終確認と判断は、社労士が行います。</p>
+      <p style="margin-top:8px"><a href="/automation/">業務自動化・AI活用の詳細 →</a></p>
+    </section>
+
+    <section class="section" aria-labelledby="h-contact">
+      <div class="section-head"><span class="eyebrow">Contact</span><h2 id="h-contact">お問い合わせ</h2><span class="line"></span></div>
+      <p>「これは相談していいことだろうか」という段階で、お気軽にご連絡ください。初回のご相談（1回・60分程度）とお見積りは無料です。顧問契約のほか、給与計算のみ・手続きのみ・スポットでのご依頼にも対応しています。</p>
+      <p style="margin-top:8px"><a href="/contact/">お問い合わせフォームへ →</a>　<a href="/pricing/">料金目安（税別）を見る →</a></p>
     </section>
 
     <section class="section" aria-labelledby="h-news">
