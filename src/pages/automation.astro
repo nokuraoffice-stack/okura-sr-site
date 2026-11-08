@@ -2,17 +2,16 @@
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Icon from '../components/Icon.astro';
-import Draft from '../components/Draft.astro';
 import { BEFORE_AFTER, SECURITY } from '../data/content';
 const areas = [
-  { no: '01', t: '手続き', d: '電子申請の自動化・公文書の自動振り分け' },
-  { no: '02', t: '給与計算', d: '勤怠→給与ソフト取込の自動化・全件機械突合' },
-  { no: '03', t: '規程・相談', d: '法改正の月次ウォッチ・AIによる一次整理' },
+  { no: '01', t: '手続き', d: '離職票の賃金支払基礎日数や算定基礎届の判定を、勤怠・給与データから機械的に算定し、電子申請用のデータまで組み立てます。交付された公文書は自動で振り分けて共有します。' },
+  { no: '02', t: '給与計算', d: '勤怠システムの出力から給与ソフト用の取り込みデータを生成し、前月との差分を全件機械的に突合します。料率改定や住民税更新の反映もチェックします。' },
+  { no: '03', t: '規程・相談', d: '法改正情報を月次で収集して影響範囲を整理し、規程の改定案や従業員向けの通知文をAIが下書きします。内容の確認と仕上げは社労士が行います。' },
 ];
 ---
-<Base title="業務自動化・AI活用" description="大倉社会保険労務士事務所は、手続き・給与計算・規程の実務をPython・AIで自動化し、生まれた時間を相談対応に充てています。Before/After と情報セキュリティ4原則を紹介します。" updated="2026-11-07">
+<Base title="業務自動化・AI活用" description="大倉社会保険労務士事務所は、手続き・給与計算・規程の実務をPython・AIで自動化し、生まれた時間を相談対応に充てています。Before/After と情報セキュリティ4原則を紹介します。" updated="2026-11-08">
   <div class="wrap">
-    <PageHead title="業務自動化・AI活用" eyebrow="Automation" lead="事務所の実務そのものを自動化し、その成果を品質と価格に還元しています。定型作業は仕組みに任せ、社労士の時間は相談と判断に使います。" updated="2026-11-07" />
+    <PageHead title="業務自動化・AI活用" eyebrow="Automation" lead="事務所の実務そのものを自動化し、その成果を品質と価格に還元しています。定型作業は仕組みに任せ、社労士の時間は相談と判断に使います。" updated="2026-11-08" />
 
     <section aria-labelledby="h-flow">
       <h2 id="h-flow" style="margin-top:0">自動化で変わること</h2>
@@ -21,6 +20,8 @@ const areas = [
         <div class="fbox dark"><div class="k">STEP 2</div><div class="t">生まれた時間を相談対応へ</div><div class="d">社労士は判断と助言に集中</div></div>
         <div class="fbox"><div class="k">STEP 3</div><div class="t">属人化から脱却</div><div class="d">担当者の頑張りに頼らない運用へ</div></div>
       </div>
+      <p style="margin-top:12px">転記・集計・検算といった定型作業は、Python（プログラミング言語）とAIで組んだ仕組みに任せています。生まれた時間は、経営者との相談や判断の難しい案件に充てます。手順を仕組みとして残すため、当事務所でも御社でも、担当者が替わっても同じ品質で運用できます。</p>
+      <p class="note">自動化は業務効率化のための手段です。申請内容や給与額の最終確認と判断は、社労士が行います。</p>
     </section>
 
     <section class="section" aria-labelledby="h-areas">
@@ -46,8 +47,8 @@ const areas = [
     </section>
 
     <section class="section" aria-labelledby="h-sec">
-      <h2 id="h-sec">情報セキュリティ4原則<Draft /></h2>
-      <p class="note">公開版の要約です。詳しくは<a href="/ai-policy/">生成AI利用方針</a>をご覧ください。</p>
+      <h2 id="h-sec">情報セキュリティ4原則</h2>
+      <p>従業員の個人情報をお預かりする以上、自動化とAI活用は「安全に運用できること」が前提です。当事務所では次の4つの原則で運用しています。公開版の要約です。詳しくは<a href="/ai-policy/">生成AI利用方針</a>をご覧ください。</p>
       <div class="grid3" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
         {SECURITY.map((s, i) => (
           <div class="card box"><span class="no">{String(i + 1).padStart(2, '0')}</span><h3 class="t"><Icon name={s.icon} />{s.title}</h3><p class="d">{s.text}</p></div>

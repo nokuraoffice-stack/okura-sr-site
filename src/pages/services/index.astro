@@ -16,9 +16,9 @@ const ld = [{
   itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.data.title, url: `${SITE.url}/services/${s.id}/` })),
 }];
 ---
-<Base title="サービス" description="労働・社会保険の手続き代行、給与計算、就業規則、労務相談、助成金・制度設計、教育研修の6サービス。顧問契約のほかスポットのご依頼にも対応します。" updated="2026-11-07" ld={ld}>
+<Base title="サービス" description="労働・社会保険の手続き代行、給与計算、就業規則、労務相談、助成金・制度設計、教育研修の6サービス。顧問契約のほかスポットのご依頼にも対応します。" updated="2026-11-08" ld={ld}>
   <div class="wrap">
-    <PageHead title="サービス" eyebrow="Services" lead="手続き・給与計算・規程・相談の6つのサービスを、必要な範囲だけ組み合わせてご依頼いただけます。顧問契約のほか、スポットのご依頼にも対応しています。" updated="2026-11-07" />
+    <PageHead title="サービス" eyebrow="Services" lead="手続き・給与計算・規程・相談の6つのサービスを、必要な範囲だけ組み合わせてご依頼いただけます。顧問契約のほか、スポットのご依頼にも対応しています。" updated="2026-11-08" />
     <div class="grid3">
       {groups.map((g) => (
         <section class="svc-col" aria-label={g.name}>
@@ -34,6 +34,11 @@ const ld = [{
         </section>
       ))}
     </div>
-    <p class="note" style="margin-top:1.2rem">料金は<a href="/pricing/">料金目安</a>をご覧ください。</p>
+    <section class="section" aria-labelledby="h-how">
+      <h2 id="h-how">ご依頼の形</h2>
+      <p>手続き代行と日常の労務相談は月額顧問に含まれ、給与計算はオプションとして追加できます。就業規則の作成・改定や助成金申請、労働基準監督署の調査立会いなどは、顧問契約がなくてもスポットでご依頼いただけます。</p>
+      <p>どのサービスも、定型作業は仕組みで処理し、判断と確認は社労士が行います。自動化の取り組みは<a href="/automation/">業務自動化・AI活用</a>をご覧ください。</p>
+      <p class="note">料金はすべて目安・税別です。詳しくは<a href="/pricing/">料金目安</a>をご覧ください。</p>
+    </section>
   </div>
 </Base>
