@@ -76,8 +76,8 @@ main { display: block; padding-bottom: 3rem; }
 .sq { width: 10px; height: 10px; background: var(--c-teal); display: inline-block; flex-shrink: 0; }
 
 /* section header with rule line (.flow-h) */
-.section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; flex-wrap: wrap; }
-.section-head .line { flex: 1 1 40px; height: 1px; background: var(--c-line); }
+.section-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; margin-bottom: 1.6rem; }
+.section-head .line { width: 40px; height: 2px; background: var(--c-teal); flex: none; margin-top: 4px; }
 .section-head h2 { margin: 0; }
 
 /* header */
@@ -215,15 +215,35 @@ a.card:hover { border-color: var(--c-teal); background: var(--c-teal-pale); }
 .skip:focus { left: 8px; top: 8px; background: #fff; padding: 6px 10px; z-index: 10; }
 
 /* ---------- breakpoints (mobile-first) ---------- */
+/* --- 2026-11 Stitch案B/C を反映 --- */
+.hero .accent { color: var(--c-teal-dark); }
+.hero .lead-sub { font-size: .82rem; color: var(--c-muted); margin: -.2em 0 .6em; }
+.eyebrow.tag { display: inline-block; padding: 3px 10px; border: 1px solid var(--c-teal); background: var(--c-teal-pale); letter-spacing: .08em; }
+.hero-fig { margin: 0; padding: 14px; background: #fff; }
+.hero-fig img { display: block; width: 100%; height: auto; }
+.hero .tiles { margin-top: 1.6rem; grid-template-columns: 1fr; }
+.tile .k { font-size: .75rem; color: var(--c-muted); }
+.tile .n small { font-size: .55em; margin-left: 2px; color: var(--c-ink); }
+.svc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.svc .ico { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; background: var(--c-teal-pale); border: 1px solid var(--c-line-soft); }
+.svc .tag { font-size: .7rem; font-weight: 600; color: var(--c-teal-dark); background: var(--c-teal-pale); padding: 2px 8px; }
+.step-cards { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.step-cards li { margin: 0; padding: 14px 16px; background: #fff; display: flex; flex-direction: column; gap: 4px; }
+.step-cards .sn { font-family: var(--font-mono); font-size: .72rem; font-weight: 600; letter-spacing: .08em; color: var(--c-teal-dark); }
+.step-cards .t { font-weight: 700; }
+.step-cards .f { font-size: .75rem; font-weight: 600; color: var(--c-teal-dark); }
+.step-cards .f.paid { color: var(--c-muted); font-weight: 400; }
+
 @media (min-width: 640px) {
+  .hero .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dl > div { grid-template-columns: 11em 1fr; gap: 16px; }
   .site-footer .foot-grid { grid-template-columns: 1fr 1fr; }
   .cta { padding: 36px 32px; }
 }
 @media (min-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr auto; align-items: end; gap: 3rem; }
-  .tiles { grid-template-columns: repeat(3, 140px); }
+  .hero-inner { grid-template-columns: 1.05fr 1fr; align-items: center; gap: 3rem; }
+  .step-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .flow { grid-template-columns: 1fr 1.2fr 1fr; align-items: stretch; }
   .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
