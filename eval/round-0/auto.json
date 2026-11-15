@@ -1,0 +1,217 @@
+{
+ "date": "2026-11-15",
+ "results": {
+  "A1": {
+   "r": 1,
+   "note": ""
+  },
+  "A2": {
+   "r": 1,
+   "note": ""
+  },
+  "A3": {
+   "r": 1,
+   "note": ""
+  },
+  "A4": {
+   "r": 1,
+   "note": ""
+  },
+  "A5": {
+   "r": 1,
+   "note": ""
+  },
+  "A6": {
+   "r": 1,
+   "note": ""
+  },
+  "A7": {
+   "r": 1,
+   "note": ""
+  },
+  "A8": {
+   "r": 1,
+   "note": ""
+  },
+  "A9": {
+   "r": 1,
+   "note": ""
+  },
+  "A10": {
+   "r": 0,
+   "note": "ai-policy/index.html:必ず / ai-policy/index.md:必ず / llms-full.txt:必ず"
+  },
+  "A11": {
+   "r": 1,
+   "note": ""
+  },
+  "A12": {
+   "r": 0,
+   "note": "登録なし注記が近くにない"
+  },
+  "A13": {
+   "r": 0,
+   "note": "独立表示なし: /about/"
+  },
+  "A14": {
+   "r": 1,
+   "note": ""
+  },
+  "A15": {
+   "r": 0,
+   "note": "台帳なし"
+  },
+  "A16": {
+   "r": 0,
+   "note": "未確定: §9の未チェック 7行"
+  },
+  "B3": {
+   "r": 1,
+   "note": ""
+  },
+  "B4": {
+   "r": 0,
+   "note": "/:title≠h1"
+  },
+  "B6": {
+   "r": 0,
+   "note": "ドラフト印: /contact/ /faq/ /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/"
+  },
+  "B7": {
+   "r": 0,
+   "note": "なし: フォーム"
+  },
+  "B9": {
+   "r": 0,
+   "note": "/services/consulting/(17字) /services/payroll/(15字) /services/procedures/(17字) /services/rules/(15字) /services/subsidy/(15字) /services/training/(18字)"
+  },
+  "E1": {
+   "r": 1,
+   "note": ""
+  },
+  "E2": {
+   "r": 1,
+   "note": ""
+  },
+  "E3": {
+   "r": 1,
+   "note": ""
+  },
+  "E4": {
+   "r": 1,
+   "note": ""
+  },
+  "E5": {
+   "r": 1,
+   "note": ""
+  },
+  "E6": {
+   "r": 1,
+   "note": ""
+  },
+  "E7": {
+   "r": 0,
+   "note": "未掲載: lastmodなし:18件"
+  },
+  "E8": {
+   "r": 1,
+   "note": ""
+  },
+  "E9": {
+   "r": 1,
+   "note": ""
+  },
+  "E10": {
+   "r": 1,
+   "note": ""
+  },
+  "E11": {
+   "r": 1,
+   "note": ""
+  },
+  "E12": {
+   "r": 1,
+   "note": ""
+  },
+  "E13": {
+   "r": 0,
+   "note": "noindex: 本文リンクなし:/about/ /faq/ /services/"
+  },
+  "E14": {
+   "r": 0,
+   "note": "一次情報リンクなし: /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/"
+  },
+  "E15": {
+   "r": 0,
+   "note": "執筆・監修の表示なし: /services/consulting/ /services/payroll/ /services/procedures/ /services/rules/ /services/subsidy/ /services/training/ /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/"
+  },
+  "E16": {
+   "r": 1,
+   "note": ""
+  },
+  "F4": {
+   "r": 1,
+   "note": ""
+  },
+  "F5": {
+   "r": 1,
+   "note": ""
+  },
+  "F6": {
+   "r": 1,
+   "note": ""
+  },
+  "C1": {
+   "r": 0,
+   "note": "ティール系以外: #f3f5f7(色相210) #8a5a00(色相39) #fff4d6(色相44) #d9a400(色相45) #e4e9ee(色相210)"
+  },
+  "C2": {
+   "r": 1,
+   "note": ""
+  },
+  "C3": {
+   "r": 1,
+   "note": ""
+  },
+  "C4": {
+   "r": 1,
+   "note": ""
+  },
+  "C6": {
+   "r": 1,
+   "note": ""
+  },
+  "D1": {
+   "r": 1,
+   "note": ""
+  },
+  "D2": {
+   "r": 0,
+   "note": "40px未満: 大倉社会保険労務:35px サービス:31px 業務自動化:31px 料金目安:31px 事務所概要:31px 労務ニュース:31px"
+  },
+  "D3": {
+   "r": 1,
+   "note": ""
+  },
+  "D4": {
+   "r": 1,
+   "note": ""
+  },
+  "C5": {
+   "r": 0,
+   "note": "コントラスト不合格: /"
+  },
+  "F1": {
+   "r": 0,
+   "note": "/:87 /pricing/:89 /about/:89"
+  },
+  "F2": {
+   "r": 1,
+   "note": ""
+  },
+  "F3": {
+   "r": 1,
+   "note": ""
+  }
+ }
+}
