@@ -25,7 +25,7 @@ const ld = [{
 ---
 <Base title={d.title} description={`${d.title}（${d.summary}）。大倉社会保険労務士事務所が全国にオンラインで対応します。`} updated={d.updated} ld={ld} crumbLabel={d.title}>
   <div class="wrap">
-    <PageHead title={d.title} eyebrow={`Service ${d.no} — ${d.group}`} lead={d.summary} updated={d.updated} />
+    <PageHead title={d.title} eyebrow={`Service ${d.no} — ${d.group}`} sub={d.summary} updated={d.updated} byline />
     <article class="prose">
       <Content />
     </article>
