@@ -23,11 +23,15 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(4398, r));
 const CHROME = require('/opt/npm-tools/node_modules/playwright').chromium.executablePath();
 const out = {};
+// 速度の点は実行ごとに揺れるので、各ページ3回測って performance は中央値を採る（2026-11-15 修正）
 for (const u of MAIN6) {
-  const tmp = path.join(process.env.LH_DIR, 'lh-tmp.json');
-  await execP(`npx lighthouse http://localhost:4398${u} --quiet --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=${tmp}`, { cwd: process.env.LH_DIR, env: { ...process.env, CHROME_PATH: CHROME } });
-  const r = JSON.parse(fs.readFileSync(tmp, 'utf8')); const c = (k) => Math.round(r.categories[k].score * 100);
-  out[u] = { performance: c('performance'), accessibility: c('accessibility'), 'best-practices': c('best-practices'), seo: c('seo'), contrast: r.audits['color-contrast'].score, failed: Object.values(r.audits).filter((a) => a.score !== null && a.score < 0.9 && a.scoreDisplayMode === 'binary').map((a) => a.id) };
+  const tmp = path.join(process.env.LH_DIR, 'lh-tmp.json'); const perf = []; let r;
+  for (let i = 0; i < 3; i++) {
+    await execP(`npx lighthouse http://localhost:4398${u} --quiet --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=${tmp}`, { cwd: process.env.LH_DIR, env: { ...process.env, CHROME_PATH: CHROME } });
+    r = JSON.parse(fs.readFileSync(tmp, 'utf8')); perf.push(Math.round(r.categories.performance.score * 100));
+  }
+  const c = (k) => Math.round(r.categories[k].score * 100);
+  out[u] = { performance: [...perf].sort((a, b) => a - b)[1], performanceRuns: perf, accessibility: c('accessibility'), 'best-practices': c('best-practices'), seo: c('seo'), contrast: r.audits['color-contrast'].score };
   console.log(u, JSON.stringify(out[u]));
 }
 server.close();

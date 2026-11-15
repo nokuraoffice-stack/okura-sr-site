@@ -1,52 +1,74 @@
 {
  "/": {
-  "performance": 96,
+  "performance": 86,
+  "performanceRuns": [
+   86,
+   83,
+   97
+  ],
   "accessibility": 97,
   "best-practices": 100,
   "seo": 100,
-  "contrast": 0,
-  "failed": [
-   "color-contrast"
-  ]
+  "contrast": 0
  },
  "/services/": {
-  "performance": 97,
+  "performance": 96,
+  "performanceRuns": [
+   88,
+   96,
+   97
+  ],
   "accessibility": 100,
   "best-practices": 100,
   "seo": 100,
-  "contrast": 1,
-  "failed": []
+  "contrast": 1
  },
  "/pricing/": {
   "performance": 97,
+  "performanceRuns": [
+   97,
+   97,
+   97
+  ],
   "accessibility": 100,
   "best-practices": 100,
   "seo": 100,
-  "contrast": 1,
-  "failed": []
+  "contrast": 1
  },
  "/about/": {
   "performance": 97,
+  "performanceRuns": [
+   97,
+   97,
+   89
+  ],
   "accessibility": 100,
   "best-practices": 100,
   "seo": 100,
-  "contrast": 1,
-  "failed": []
+  "contrast": 1
  },
  "/faq/": {
   "performance": 97,
+  "performanceRuns": [
+   97,
+   97,
+   89
+  ],
   "accessibility": 100,
   "best-practices": 100,
   "seo": 100,
-  "contrast": 1,
-  "failed": []
+  "contrast": 1
  },
  "/contact/": {
-  "performance": 98,
+  "performance": 97,
+  "performanceRuns": [
+   97,
+   89,
+   97
+  ],
   "accessibility": 100,
   "best-practices": 100,
   "seo": 100,
-  "contrast": 1,
-  "failed": []
+  "contrast": 1
  }
 }

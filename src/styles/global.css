@@ -145,7 +145,7 @@ a.card:hover { border-color: var(--c-teal); background: var(--c-teal-pale); }
 .fbox .t { font-weight: 700; }
 .fbox .d { font-size: .85rem; color: var(--c-muted); line-height: 1.6; }
 .fbox.dark { background: var(--c-teal-dark); border-color: var(--c-teal-dark); color: #fff; }
-.fbox.dark .k, .fbox.dark .d { color: var(--c-teal-soft); }
+.fbox.dark .k, .fbox.dark .d { color: #fff; }
 
 /* steps */
 .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; counter-reset: step; }
@@ -188,7 +188,7 @@ a.card:hover { border-color: var(--c-teal); background: var(--c-teal-pale); }
 
 /* CTA block (キャッチコピーはここ／フッターのみ) */
 .cta { background: var(--c-foot); color: #fff; padding: 28px 20px; margin-top: 3rem; display: grid; gap: 16px; }
-.cta .tag { font-size: clamp(1.3rem, 4vw, 1.7rem); font-weight: 700; margin: 0; line-height: 1.4; }
+.cta .tag { font-size: clamp(1.25rem, 3.2vw, 1.55rem); font-weight: 700; margin: 0; line-height: 1.4; }
 .cta .sub { color: var(--c-foot-sub); margin: 0; font-size: .92rem; }
 .cta .btn { background: var(--c-teal); border-color: var(--c-teal); color: var(--c-teal-ink); }
 .cta .btn:hover { background: #fff; border-color: #fff; color: var(--c-teal-ink); }
@@ -212,7 +212,7 @@ a.card:hover { border-color: var(--c-teal); background: var(--c-teal-pale); }
 .site-footer { background: var(--c-foot); color: #E3ECEE; margin-top: 0; padding: 32px 0 24px; font-size: .88rem; }
 .site-footer a { color: #E3ECEE; }
 .site-footer .foot-grid { display: grid; gap: 22px; }
-.site-footer .tag { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0 0 4px; }
+.site-footer .tag { font-size: 1rem; font-weight: 700; color: #fff; margin: 0 0 4px; }
 .site-footer .sub { color: var(--c-foot-sub); margin: 0; font-size: .82rem; }
 .site-footer address { font-style: normal; line-height: 1.7; }
 .foot-dl { margin: 8px 0 0; display: grid; gap: 6px; }
@@ -233,8 +233,8 @@ a.card:hover { border-color: var(--c-teal); background: var(--c-teal-pale); }
 /* ---------- breakpoints (mobile-first) ---------- */
 /* --- 2026-11 Stitch案B/C を反映 --- */
 .hero .accent { color: var(--c-teal-dark); }
-.hero .lead-sub { font-size: .82rem; color: var(--c-muted); margin: -.2em 0 .6em; }
-.eyebrow.tag { display: inline-block; padding: 3px 10px; border: 1px solid var(--c-teal); background: var(--c-teal-pale); letter-spacing: .08em; }
+.hero .lead-sub { font-size: .82rem; color: var(--c-muted); margin: 1rem 0 0; }
+
 .hero-fig { margin: 0; padding: 14px; background: #fff; }
 .hero-fig img { display: block; width: 100%; height: auto; }
 .hero .tiles { margin-top: 1.6rem; grid-template-columns: 1fr; }
@@ -258,7 +258,7 @@ a.card:hover { border-color: var(--c-teal); background: var(--c-teal-pale); }
   .cta { padding: 36px 32px; }
 }
 @media (min-width: 900px) {
-  .hero-inner { grid-template-columns: 1.05fr 1fr; align-items: center; gap: 3rem; }
+  .hero-inner { grid-template-columns: minmax(0, 1fr) 600px; align-items: center; gap: 2.5rem; }
   .step-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .flow { grid-template-columns: 1fr 1.2fr 1fr; align-items: stretch; }
@@ -294,3 +294,15 @@ a.card:hover { border-color: var(--c-teal); background: var(--c-teal-pale); }
   .brand small { font-size: .68rem; }
   .nav-btn { padding: 0 16px; font-size: .9rem; margin-left: 6px; }
 }
+
+/* 2026-11 評価ループ周2: 帯の交互背景・余白の統一・小ラベルの統一 */
+.band { padding: 3.5rem 0; }
+.band.alt { background: var(--c-teal-pale); }
+.hero { border-bottom: 1px solid var(--c-line-soft); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ""; width: 8px; height: 8px; background: var(--c-teal); flex: none; }
+.cta .eyebrow { color: var(--c-teal); margin-bottom: 6px; }
+.link-row { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: 6px 24px; }
+.link-row li + li { margin-top: 0; }
+.svc-col + .svc-col .svc-cap { margin-top: 1.6rem; }
+@media (min-width: 900px) { .svc-col + .svc-col .svc-cap { margin-top: 0; } }

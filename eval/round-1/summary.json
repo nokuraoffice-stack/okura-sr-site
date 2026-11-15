@@ -1,8 +1,8 @@
 {
  "date": "2026-11-15",
- "ones": 67,
+ "ones": 66,
  "denom": 78,
- "pct": 85.9,
+ "pct": 84.6,
  "starZero": [
   "A16"
  ],
@@ -29,7 +29,7 @@
    16
   ],
   "F": [
-   6,
+   5,
    6
   ],
   "R": [
@@ -62,6 +62,11 @@
    "id": "E14",
    "kind": "自",
    "note": "一次情報リンクなし: /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/"
+  },
+  {
+   "id": "F1",
+   "kind": "自",
+   "note": "/:86"
   },
   {
    "id": "C8",
