@@ -65,7 +65,7 @@
 | E14 | 自 | 0 | 一次情報リンクなし: /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/ |
 | E15 | 自 | 0 | 執筆・監修の表示なし: /services/consulting/ /services/payroll/ /services/procedures/ /services/rules/ /services/subsidy/ /services/training/ /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/ |
 | E16 | 自 | 1 |  |
-| F1 | 自 | 0 | /:87 /pricing/:89 /about/:89 |
+| F1 | 自 | 0 | /:89 |
 | F2 | 自 | 1 |  |
 | F3 | 自 | 1 |  |
 | F4 | 自 | 1 |  |

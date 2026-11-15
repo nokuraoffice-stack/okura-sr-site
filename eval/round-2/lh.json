@@ -1,0 +1,74 @@
+{
+ "/": {
+  "performance": 96,
+  "performanceRuns": [
+   90,
+   96,
+   96
+  ],
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1
+ },
+ "/services/": {
+  "performance": 97,
+  "performanceRuns": [
+   97,
+   97,
+   97
+  ],
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1
+ },
+ "/pricing/": {
+  "performance": 97,
+  "performanceRuns": [
+   97,
+   72,
+   98
+  ],
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1
+ },
+ "/about/": {
+  "performance": 97,
+  "performanceRuns": [
+   97,
+   78,
+   97
+  ],
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1
+ },
+ "/faq/": {
+  "performance": 97,
+  "performanceRuns": [
+   97,
+   97,
+   97
+  ],
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1
+ },
+ "/contact/": {
+  "performance": 85,
+  "performanceRuns": [
+   68,
+   85,
+   97
+  ],
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1
+ }
+}
