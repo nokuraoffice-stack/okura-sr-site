@@ -33,7 +33,7 @@ const ld = [{
       <header class="page-head">
         <div class="eyebrow" style="margin-bottom:6px">News{d.tags.length ? ` — ${d.tags.join(' / ')}` : ''}</div>
         <h1>{d.title}</h1>
-        <p class="updated">公開 <time datetime={fmt(d.datePublished)}>{fmt(d.datePublished)}</time> ／ 最終更新 <time datetime={fmt(modified)}>{fmt(modified)}</time> ／ 執筆 {SITE.representative}（{SITE.jobTitle}）</p>
+        <p class="updated">公開 <time datetime={fmt(d.datePublished)}>{fmt(d.datePublished)}</time> ／ 最終更新 <time datetime={fmt(modified)}>{fmt(modified)}</time> ／ 執筆 <a href="/about/">{SITE.representative}</a>（{SITE.jobTitle}）</p>
       </header>
       <Content />
       <p class="note" style="margin-top:2rem">※ 本記事は公開時点の情報に基づく一般的な解説です。個別の事案については<a href="/contact/">お問い合わせ</a>ください。</p>

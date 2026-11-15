@@ -12,23 +12,26 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         <p class="sub">{SITE.catchSub}</p>
       </div>
       <address>
-        <b>{SITE.name}</b><br />
-        代表 {SITE.representative}（{SITE.jobTitle}）<br />
-        {SITE.addressFull}<br />
-        <span class="note" style="color:inherit">（{SITE.addressNote}）</span><br />
-        TEL <a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a>（{SITE.telNote}）<br />
-        MAIL <a class="mono" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        <b>{SITE.name}</b>
+        <dl class="foot-dl">
+          <div><dt>代表</dt><dd>{SITE.representative}（{SITE.jobTitle}）</dd></div>
+          <div><dt>所在地</dt><dd>{SITE.addressFull}<br />（{SITE.addressNote}）</dd></div>
+          <div><dt>電話</dt><dd><a href={`tel:${SITE.tel.replaceAll('-', '')}`}>{SITE.tel}</a><br />（{SITE.telNote}）</dd></div>
+          <div><dt>メール</dt><dd><a class="mono" href={`mailto:${SITE.email}`}>{SITE.email}</a></dd></div>
+        </dl>
       </address>
       <nav aria-label="フッターナビゲーション">
         <ul>
           {NAV.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
-          <li><a href="/ai-policy/">生成AI利用方針</a></li>
-          <li><a href="/privacy/">個人情報保護方針</a></li>
           <li><a href="/contact/">お問い合わせ</a></li>
           <li><a href={SITE.partner.url} rel="noopener">{SITE.partner.name}</a></li>
         </ul>
       </nav>
     </div>
+    <ul class="foot-policy">
+      <li><a href="/ai-policy/">生成AI利用方針</a></li>
+      <li><a href="/privacy/">個人情報保護方針</a></li>
+    </ul>
     <div class="copy">
       <span>© {SITE.founded}–{new Date().getFullYear()} {SITE.name}</span>
       <span>最終更新 <time datetime={fmt(updated)}>{fmt(updated)}</time></span>

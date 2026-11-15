@@ -1,0 +1,52 @@
+{
+ "/": {
+  "performance": 96,
+  "accessibility": 97,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 0,
+  "failed": [
+   "color-contrast"
+  ]
+ },
+ "/services/": {
+  "performance": 97,
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1,
+  "failed": []
+ },
+ "/pricing/": {
+  "performance": 97,
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1,
+  "failed": []
+ },
+ "/about/": {
+  "performance": 97,
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1,
+  "failed": []
+ },
+ "/faq/": {
+  "performance": 97,
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1,
+  "failed": []
+ },
+ "/contact/": {
+  "performance": 98,
+  "accessibility": 100,
+  "best-practices": 100,
+  "seo": 100,
+  "contrast": 1,
+  "failed": []
+ }
+}
