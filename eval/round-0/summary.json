@@ -1,0 +1,197 @@
+{
+ "date": "2026-11-15",
+ "ones": 50,
+ "denom": 78,
+ "pct": 64.1,
+ "starZero": [
+  "A10",
+  "A12",
+  "A13",
+  "A15",
+  "A16"
+ ],
+ "pass": false,
+ "byCat": {
+  "A": [
+   11,
+   16
+  ],
+  "B": [
+   5,
+   9
+  ],
+  "C": [
+   5,
+   9
+  ],
+  "D": [
+   5,
+   6
+  ],
+  "E": [
+   12,
+   16
+  ],
+  "F": [
+   5,
+   6
+  ],
+  "R": [
+   7,
+   16
+  ]
+ },
+ "zeros": [
+  {
+   "id": "A10",
+   "kind": "自",
+   "note": "ai-policy/index.html:必ず / ai-policy/index.md:必ず / llms-full.txt:必ず"
+  },
+  {
+   "id": "A12",
+   "kind": "自",
+   "note": "登録なし注記が近くにない"
+  },
+  {
+   "id": "A13",
+   "kind": "自",
+   "note": "独立表示なし: /about/"
+  },
+  {
+   "id": "A15",
+   "kind": "自",
+   "note": "台帳なし"
+  },
+  {
+   "id": "A16",
+   "kind": "自",
+   "note": "未確定: §9の未チェック 7行"
+  },
+  {
+   "id": "B4",
+   "kind": "自",
+   "note": "/:title≠h1"
+  },
+  {
+   "id": "B6",
+   "kind": "自",
+   "note": "ドラフト印: /contact/ /faq/ /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/"
+  },
+  {
+   "id": "B7",
+   "kind": "自",
+   "note": "なし: フォーム"
+  },
+  {
+   "id": "B9",
+   "kind": "自",
+   "note": "/services/consulting/(17字) /services/payroll/(15字) /services/procedures/(17字) /services/rules/(15字) /services/subsidy/(15字) /services/training/(18字)"
+  },
+  {
+   "id": "C1",
+   "kind": "自",
+   "note": "ティール系以外: #f3f5f7(色相210) #8a5a00(色相39) #fff4d6(色相44) #d9a400(色相45) #e4e9ee(色相210)"
+  },
+  {
+   "id": "C5",
+   "kind": "自",
+   "note": "コントラスト不合格: /"
+  },
+  {
+   "id": "D2",
+   "kind": "自",
+   "note": "40px未満: 大倉社会保険労務:35px サービス:31px 業務自動化:31px 料金目安:31px 事務所概要:31px 労務ニュース:31px"
+  },
+  {
+   "id": "E7",
+   "kind": "自",
+   "note": "未掲載: lastmodなし:18件"
+  },
+  {
+   "id": "E13",
+   "kind": "自",
+   "note": "noindex: 本文リンクなし:/about/ /faq/ /services/"
+  },
+  {
+   "id": "E14",
+   "kind": "自",
+   "note": "一次情報リンクなし: /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/"
+  },
+  {
+   "id": "E15",
+   "kind": "自",
+   "note": "執筆・監修の表示なし: /services/consulting/ /services/payroll/ /services/procedures/ /services/rules/ /services/subsidy/ /services/training/ /news/2026-10-customer-harassment/ /news/2026-11-kyoto-saitei-chingin/"
+  },
+  {
+   "id": "F1",
+   "kind": "自",
+   "note": "/:87 /pricing/:89 /about/:89"
+  },
+  {
+   "id": "C8",
+   "kind": "画",
+   "raw": 0,
+   "note": "top PC：末尾に注記のないセクション（選ばれる3つの理由→SERVICES、ご支援の流れ→HOW IT WORKS、ヒーロー→ISSUES）の下余白が約50pxで、注記のあるセクション（約77px）より詰まって見える"
+  },
+  {
+   "id": "C9",
+   "kind": "画",
+   "raw": "判定できない",
+   "note": "各ページ：h1・h2・カード見出し・フッター標語で4段階だが、CTA帯の見出し（自動化で、労務をもっと軽く。）がh2と同サイズか別サイズ（5段階目）か画像からは確定できない"
+  },
+  {
+   "id": "R1",
+   "kind": "画",
+   "raw": 0,
+   "note": "top PC：主見出し直下に事務所名の小さな行（大倉社会保険労務士事務所（京都・代表 大倉教晃））と本文段落の2つの文章ブロックがある"
+  },
+  {
+   "id": "R4",
+   "kind": "画",
+   "raw": 0,
+   "note": "top：ヒーロー（方眼柄）以外はすべて白地が連続し、セクションの境目が背景色の切り替えで示されていない"
+  },
+  {
+   "id": "R6",
+   "kind": "画",
+   "raw": 0,
+   "note": "全ページのフッター：TEL・MAILだけ項目名付きで、住所は項目名なし・代表は文中。項目名＋値の列でそろっていない"
+  },
+  {
+   "id": "R8",
+   "kind": "画",
+   "raw": 0,
+   "note": "PCヘッダー：ナビが7項目（サービス/業務自動化/料金目安/事務所概要/労務ニュース/よくある質問/お問い合わせ。お問い合わせも文字リンク）"
+  },
+  {
+   "id": "R9",
+   "kind": "画",
+   "raw": 0,
+   "note": "PC・スマホのヘッダー：右端は色付き文字リンク「お問い合わせ」で、背景色つきボタンが無い"
+  },
+  {
+   "id": "R10",
+   "kind": "画",
+   "raw": 0,
+   "note": "スマホのヘッダー：メニューボタンが無くナビ7項目が2行に折り返し、高さ約132px（844pxの約16%）"
+  },
+  {
+   "id": "R11",
+   "kind": "画",
+   "raw": 0,
+   "note": "top PC：2カラムだがビジュアル幅が約483px（画面1440pxの約34%）で40%未満"
+  },
+  {
+   "id": "R14",
+   "kind": "画",
+   "raw": 0,
+   "note": "top：小ラベルは色付きの英字だけで印（または2桁番号）が無い。最下部のCTA帯（自動化で、労務をもっと軽く。）にはラベル自体が無い"
+  },
+  {
+   "id": "R16",
+   "kind": "画",
+   "raw": 0,
+   "note": "全ページのフッター：方針系リンク（生成AI利用方針・個人情報保護方針）がナビと同じ列・同じ文字サイズで混在し、別グループになっていない"
+  }
+ ]
+}
