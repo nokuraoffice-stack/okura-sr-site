@@ -21,7 +21,7 @@ const updatedDate = typeof updated === 'string' ? new Date(updated) : updated;
 
 const path = Astro.url.pathname;
 const canonical = new URL(path, SITE.url).href;
-const fullTitle = path === '/' ? `労務を、仕組みで回す事務所｜${SITE.name}（京都・代表 大倉教晃）` : `${title}｜${SITE.name}（京都）`;
+const fullTitle = path === '/' ? `${SITE.name}（京都・代表 大倉教晃）｜全国リモート対応の社労士事務所` : `${title}｜${SITE.name}（京都）`;
 
 // パンくず
 const segs = path.split('/').filter(Boolean);
