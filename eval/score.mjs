@@ -114,8 +114,8 @@ set('A3', hits(/予備試験/).length === 0, hits(/予備試験/).join(' / '));
 }
 {
   const t = strip(mainOf(page('/about/').html));
-  const i = t.search(/行政書士試験\s*合格（2011年）/);
-  const ok = /特定社会保険労務士/.test(t) && i >= 0 && /行政書士登録はしていません/.test(t.slice(Math.max(0, i - 150), i + 150));
+  const i = t.search(/行政書士試験\s*合格（2011年/); // 2026-11-16 Noriaki 決定: 注記は「未登録」でよい
+  const ok = /特定社会保険労務士/.test(t) && i >= 0 && /行政書士登録はしていません|未登録/.test(t.slice(Math.max(0, i - 150), i + 150));
   set('A12', ok, i < 0 ? '試験合格の表記なし' : '登録なし注記が近くにない');
 }
 {
