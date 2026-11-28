@@ -2,7 +2,7 @@
 question: 賞与計算や年末調整も依頼できますか？
 order: 15
 category: 手続き・給与計算
-isDraft: true
+isDraft: false
 ---
 
 できます。賞与計算、年末調整、源泉徴収票・給与支払報告書・法定調書の作成まで対応しています。料金は[料金目安（給与計算オプション）](/pricing/#h-payroll)をご覧ください。
